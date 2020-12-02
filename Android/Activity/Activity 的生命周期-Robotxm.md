@@ -1,6 +1,6 @@
 # Activity 的生命周期
 
-![img](E:\GitHub\2022-CS-Interview\Android\Activity\Activity 的生命周期-Robotxm.assets\20200724013645.png)
+![img](https://github.com/luy-0/2022-CS-Interview/blob/main/Android/Activity/Activity%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-Robotxm.assets/20200724013645.png)
 
 Activity 的生命周期主要有 `onCreate()`、`onStart()`、`onResume()`、`onPause()`、`onStop()` 和 `onDestroy()` 六个。如果要分类的话，从一个不太严谨的角度可以分为：**是否可交互（`onResume()`、`onPause()`）、是否可见（`onStart()`、`onStop()`）和是否存在（`onCreate()`、`onDestroy()`）**三类。
 
