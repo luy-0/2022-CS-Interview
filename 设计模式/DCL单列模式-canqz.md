@@ -177,7 +177,7 @@ public class Singleton implements Serializable {
 
  **一句话总结就是**：当从对象流 ObjectInputStream 中读取对象时，会检查对象的类否定义了 readResolve 方法。如果定义了，则调用它返回我们想指定的对象（这里就指定了返回单例对象）
 
-然后，判断 rep 是否和 obj 相等 。 obj 是刚才我们通过构造函数创建出来的新对象，而由于我们重写了 readResolve 方法，直接返回了单例对象，因此 rep 就是原来的单例对象，和 obj 不相等。
+然后，判断 rep 是否和 obj 相等 。 rep 是readResolve返回的对象，obj 是刚才我们通过反序列化构造函数创建出来的新对象，而由于我们重写了 readResolve 方法，直接返回了单例对象，因此 rep 就是原来的单例对象，和 obj 不相等。
 
 于是，把 rep 赋值给 obj ，然后返回 obj。
 

@@ -11,7 +11,7 @@
 [DCL单列模式-canqz](.\DCL单列模式-canqz.md)
 
 1. 为什么使用synchronized和volatile
-2. 如和防止反射破坏单例模式
+2. 如和防止**序列化反序列化**破坏单例模式
 
 
 
