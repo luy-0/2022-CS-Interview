@@ -4,14 +4,14 @@
 
 [设计模式-六大原则](.\六大设计原则\设计模式-六大原则-luy.md)
 
+[Android 中的设计模式](./Android 中的设计模式-Robotxm.md)
 
+- 包含建造者模式、工厂模式、观察者模式、责任链模式、代理模式、单例模式的原始写法和 Android 中的实例应用
 
 ## 单例模式
 
-[DCL单列模式-canqz](.\DCL单列模式-canqz.md)
+[DCL单例模式](.\DCL单列模式-canqz.md)
 
-1. 为什么使用synchronized和volatile
-2. 如和防止**序列化反序列化**破坏单例模式
+- 为什么使用 `synchronized` 和 `volatile`
 
-
-
+- 如和防止**序列化反序列化**破坏单例模式
