@@ -19,7 +19,7 @@ RecyclerView 本身是一个 ViewGroup，在滑动时会涉及到对子 View 的
 
 这四级缓存的访问时机如下图：
 
-<img src="RecyclerView 的缓存机制-Robotxm.assets/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy81ODcxNjMtNjlhNmYwZTIzMzQwNjc1Ni5wbmc_aW1hZ2VNb2dyMi9hdXRvLW9yaWVudC9zdHJpcHxpbWFnZVZpZXcyLzIvdy8xMjAwL2Zvcm1hdC93ZWJw" alt="img" style="zoom:80%;" />
+<img src="RecyclerView 的缓存机制-Robotxm.assets/RecyclerView-Cache.webp" alt="img" style="zoom:80%;" />
 
 RecyclerView 滑动时会触发 `onTouchEvent#onMove()`，从这里开始对 `ViewHolder` 的回收和复用。平常使用 RecyclerView 的时候需要设置 `LayoutManager`， 后者会负责前者的布局，包括 `ItemView` 的获取和复用。以 `LinearLayoutManager` 为例，RecyclerView 重新布局时会依调用以下方法：
 
@@ -650,7 +650,7 @@ ListView 和 RecyclerView 缓存机制基本一致：
 
 由于缓存对象的不同，ListView 对缓存的获取机制也和 RecyclerView 不一样。
 
-![图片](RecyclerView 的缓存机制-Robotxm.assets/640)
+![图片](RecyclerView 的缓存机制-Robotxm.assets/ListView-Cache.webp)
 
 - RecyclerView 中获取 `mCacheViews` 缓存时，是通过匹配 `position` 获取目标位置的缓存，这样做的好处是，当数据源数据不变的情况下，无须重新 `bindView()`
 
