@@ -18,3 +18,6 @@
 
 [RecyclerView 的缓存机制](./控件/RecyclerView%20的缓存机制-Robotxm.md)
 
+## 组件
+
+[Bitmap](./组件/Bitmap-Robotxm.md)
