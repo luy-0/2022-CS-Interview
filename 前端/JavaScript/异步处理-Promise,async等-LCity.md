@@ -51,6 +51,8 @@ const sleep = (timeountMS) => new Promise((resolve) => {
     console.log(new Date, i);
 })();
 
+
+
 ```
 # 参考资料
 [理解和使用Promise.all和Promise.race](https://www.jianshu.com/p/7e60fc1be1b2)
