@@ -1,4 +1,7 @@
 # async/await
+async ： 异步的缩写
+await ： async wait 的缩写
+**await只能出现在async中**
 
 
 # 方法
@@ -59,3 +62,4 @@ const sleep = (timeountMS) => new Promise((resolve) => {
 # 参考资料
 [理解和使用Promise.all和Promise.race](https://www.jianshu.com/p/7e60fc1be1b2)
 [80% 应聘者都不及格的 JS 面试题](https://juejin.cn/post/6844903470466629640)
+[理解 JavaScript 的 async/await](https://segmentfault.com/a/1190000007535316)

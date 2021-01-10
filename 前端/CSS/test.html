@@ -1,59 +1,56 @@
 <style>
-    .box :nth-child(1) {
-        width: 200px;
+    .container {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
     }
 
-    .box :nth-child(2) {}
+    .left {
+        width: 100px;
+        background-color: blue;
+        display: flex;
+    }
 
-    .a {
-        width: 0;
-        height: 0;
-        border-width: 100px;
-        border-style: solid;
-        border-color: transparent #0099CC transparent transparent;
-        transform: rotate(90deg);
-        /*顺时针旋转90°*/
+    .mid {
+        width: 100%;
+    }
+
+    .right {
+        width: 100px;
+        background-color: brown;
+    }
+    .parent {
+        display: flex;
+        align-self: center;
+        align-content: space-around;
+        background-color: darkblue;
+        width:1000px;
+        height:1000px;
+    }
+    .parent .child-left{
+        display: flex;
+        background-color: darkcyan;
+        align-items: begin;
+        width: 100px;
+        height: 100px;
+    } 
+    .parent .child-right{
+        display: flex;
+        background-color: darkcyan;
+        align-items: end;
+        width: 100px;
+        height: 100px;
     }
 </style>
-<div class="box">
-    <div class="item">column 1</div>
-    <div class="item">column 2</div>
-    <div class="item">column 3</div>
-    <div>
-        <p>
-            setTimeout()方法是在等待指定时间后执行函数,<br/>且只执行一次传入的句柄函数. 
-            setInterval()方法是每指定间隔时间后执行一次传入的句柄函数,<br/>循环执行直至关闭窗口或clearInterval()<br/>
-        </p>
-    </div>
-    <script>
-        let arr = [1,2,3]
-const arrayProto = Array.prototype;
-//保存原有的原型对象
-const arrayMethods = Object.create(arrayProto)
-//创建1个新的对象，并将获取到的数据原型对象防止到新的对象的原型__proto__上
-//将改变数组自身内容的七个方法放置到数组
-const methodsToPatch = ['push', 'pop','shift','unshift','splice','sort','reverse']
-methodsToPatch.forEach(function(method){
-    const original = arrayProto[method]
-    Object.defineProperty(arrayMethods,method,{
-        enumerable:false,
-        configureable:true,
-        writable:true,
-        value:function(...args)
-        {
-            //侦听设置数组的操作
-            console.log(`通过${method}方法修改数组`)
-            //调用原先数组的方法，并返回结果
-            const res = original.apply(this,args)
-            return res
-        }
-    })
-})
-console.log(arrayMethods)
-arr.__proto__= arrayMethods;
-arr.push(1)
-    </script>
 
-    <div class="a"></div>
+<div class="container ">
+
+    <div class='left'></div>
+    <div class='mid'></div>
+    <div class='right'></div>
+    <div class="parent">
+        <div class="child-left"></div>
+        <div class="child-right"></div>
+    </div>
 
 </div>
