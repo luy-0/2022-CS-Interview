@@ -1,6 +1,133 @@
 # Promise
 Promise.resolve(x) 可以看作是 new Promise(resolve => resolve(x)) 的简写，可以用于快速封装字面量对象或其他对象，将其封装成 Promise 实例
 
+- 返回一个Promise对象，使用该对象来注册处理结果和错误的回调
+- 同时可以串联.then 和 .catch
+## 本质
+- 最终要被交付的结果的容器
+- 可以注册监听器的对象（指运行resolve之后能够按需执行下来的代码）
+### 例子
+```javascript
+function addAsync(x, y) {
+  return new Promise(
+    (resolve, reject) => { // (A)
+      if (x === undefined || y === undefined) {
+        reject(new Error('Must provide two parameters'));
+        //将这个error对象传递给.catch
+      } else {
+        resolve(x + y);
+        //将值传递给then
+      }
+    });
+}
+
+addAsync(3, 4)
+  .then(result => { // success
+    assert.equal(result, 7);
+  })
+  .catch(error => { // failure
+    assert.fail(error);
+  });
+```
+- 一个 Promise 中包含几个状态
+  - Pending
+  - fulfilled
+  - rejected
+  - 而resolve和reject的执行则会导致这些状态的变化
+  - 具体可以参考[手写实现Promise](https://segmentfault.com/a/1190000023180502)
+  - 个人觉得是写的最好的手写实现代码和相关解释了
+### .then
+- 返回一个新的Promise
+### 回调返回一个非Promise值
+- 直接作为值传递给下一个.then()
+```javascript
+Promise.resolve('abc')
+.then(str => {
+  return str + str; // (A)
+})
+.then(str2 => {
+  assert.equal(str2, 'abcabc'); // (B)
+});
+```
+
+### 回调返回一个Promise
+```javascript
+Promise.resolve('abc')
+.then(str => {
+  return Promise.resolve(123); // (A)
+})
+.then(num => {
+  assert.equal(num, 123);
+});
+```
+- 个人理解：替换原本执行 .then()创建的Promise而使用当前返回的这个值作为返回的Promise
+- 非Promise返回值时，原本的.then()会对返回结果进行封装后返回
+
+### 抛出异常
+
+### .catch
+- 和then的区别仅有，.catch由reject触发，将其回调的操作转换为Promise
+### Promise.resolve()
+- 创建一个被给定值履行的Promise
+- 即一般Promise创建后状态默认为 pending
+- 而以这样方式创建的promise状态为fulfill
+```javascript
+Promise.resolve(123)
+.then(x => {
+  //此处传入的x就是123，因为运行来resolve所以直接执行then
+});
+```
+### Promise.reject()
+- 大概同上
+
+## Promise的优势
+- 回调上更加清晰
+- 链式调用更加清晰
+
+## 举例
+1. 对于需要获得返回文本的网络请求
+### 传统的回调函数
+```js
+import * as fs from 'fs';
+fs.readFile('person.json',
+  (error, text) => {
+    if (error) { // (A)
+      // Failure
+      assert.fail(error);
+    } else {
+      // Success
+      try { // (B)
+        const obj = JSON.parse(text); // (C)
+        assert.deepEqual(obj, {
+          first: 'Jane',
+          last: 'Doe',
+        });
+      } catch (e) {
+        // Invalid JSON
+        assert.fail(e);
+      }
+    }
+  });
+```
+### 使用Promise优化
+```js
+readFileAsync('person.json')
+.then(text => { // (A)
+  // Success
+  const obj = JSON.parse(text);
+  assert.deepEqual(obj, {
+    first: 'Jane',
+    last: 'Doe',
+  });
+})
+.catch(err => { // (B)
+  // Failure: file I/O error or JSON syntax error
+  assert.fail(err);
+});
+
+//此处可以考虑一下如何实现 readFileAsync()
+```
+2. http
 
 # async/await
 async ： 异步的缩写
@@ -79,5 +206,9 @@ const sleep = (timeountMS) => new Promise((resolve) => {
 ```
 # 参考资料
 [理解和使用Promise.all和Promise.race](https://www.jianshu.com/p/7e60fc1be1b2)
+
 [80% 应聘者都不及格的 JS 面试题](https://juejin.cn/post/6844903470466629640)
+
 [理解 JavaScript 的 async/await](https://segmentfault.com/a/1190000007535316)
+
+[37.异步编程的 Promise](https://github.com/apachecn/impatient-js-zh/blob/master/docs/45.md)
