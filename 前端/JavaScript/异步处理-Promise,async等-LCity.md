@@ -1,7 +1,25 @@
+# Promise
+Promise.resolve(x) 可以看作是 new Promise(resolve => resolve(x)) 的简写，可以用于快速封装字面量对象或其他对象，将其封装成 Promise 实例
+
+
 # async/await
 async ： 异步的缩写
 await ： async wait 的缩写
 **await只能出现在async中**
+
+**async返回值是一个包含返回结果的promise对象**
+> 获取返回值的方法<br>
+- 使用then链来处理对象
+- 使用await提取
+
+- await ： 等待的内容，等待async完成的返回值，或者等待一个表达式的计算结果
+  - 若返回值是一个Promise对象，阻塞后面的代码，等待promise对象resolve，然后将resolve的值作为await表达式的运算结果返回
+
+> **从上面的描述中，我们不难看出**<br>
+> await 实际上就是.then 的写法
+> 而 async 则就是声明一个promise对象
+
+
 
 
 # 方法
