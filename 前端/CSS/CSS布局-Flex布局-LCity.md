@@ -12,6 +12,15 @@
 <br/><br/><br/>
 
 其次我们来了解flex的一些基本属性
+
+# flex属性
+因为较为常用，并且十分方便，所以单独列出来，进行记忆
+flex:1 被当作flex-basic
+flex:auto 相当于 flex:1 1 auto ,flex-grow | flex-shrink | flex-basis
+- basis:主轴方向的初始大小
+- grow:获得剩余空间
+- shrink:超出范围的收缩规则
+
 # 父容器属性
 
 父容器上有六个属性

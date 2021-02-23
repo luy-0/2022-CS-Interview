@@ -4,6 +4,7 @@
 
 ## 文本的情况
 ### line-height
+
 > 适用于子元素为单行文本的情况
 
 > 设置子元素的line-heighth值等于父元素的height /* 垂直 */
@@ -20,6 +21,9 @@ text-align : center; /* 水平 */
     margin:0 auto;
 }
 ```
+> 当上下被设置为auto时，会自动变成0
+
+> top + margin-top + border-top-width + padding-top + height + padding-bottom + border-bottom-width + margin-bottom + bottom = height
 
 
 ## 通过不同的display所拥有的属性操作进行居中
@@ -97,6 +101,8 @@ vertical-align:middle /*垂直 */
 [CSS垂直居中的8种方法](https://www.cnblogs.com/clj2017/p/9293363.html)
 
 [css实现水平居中的几种方式](http://dengdongxia.com/2018/05/13/2018-05-13-Css-horizontal-centering-method/)
+
+[绝对定位+margin auto垂直居中引发的思考](https://juejin.cn/post/6844904084114259976)
 
 
 

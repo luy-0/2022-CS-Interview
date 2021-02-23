@@ -52,7 +52,7 @@ display属性就是对行内元素和块级元素进行转换的方法
 
 个人理解：依旧按照static中的位置进行布局，会占据对应的空间，可以使用left等调整位置
 ## absolute
-根据除static以外的第一个父元素的位置进行定位 **脱离normal flow**
+根据除static以外的第一个父元素的位置进行定位，直到找到window为止 **脱离normal flow**
 可以设置外边距margin，且不会与其他边距合并
 
 ## fixed
